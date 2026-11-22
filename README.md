@@ -1,6 +1,6 @@
 # Netatmo Indoor Climate
 
-**v0.1.0-beta.1** - an experimental beta. Signed webhook reception and
+**v0.1.0-beta.2** - an experimental beta. Signed webhook reception and
 registration are tested with synthetic responses; real NAMain event payloads
 and delivery cadence still need verification.
 
@@ -49,6 +49,17 @@ remains visible on a successful poll even if the measurement is stale.
 ## Installation and authorization
 
 Requires Home Assistant **2026.1 or newer**.
+
+### HACS / Marketplace
+
+Add `https://github.com/wolfgangbures/HANetAtmoWeather` as an **Integration**
+custom repository, or use **Add from a GitHub link** in Marketplace. Download
+**v0.1.0-beta.2** (enable beta/prerelease versions if needed), restart Home
+Assistant, then follow the authorization steps below starting at step 3.
+HACS installs from the repository's `custom_components/netatmo_indoor` directory;
+the ZIP release asset is for manual installation.
+
+### Manual installation and authorization
 
 1. Download `netatmo_indoor.zip` from the
    [GitHub releases](https://github.com/wolfgangbures/HANetAtmoWeather/releases)
