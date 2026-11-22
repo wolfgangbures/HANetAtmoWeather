@@ -1,0 +1,66 @@
+{
+  "title": "Netatmo Indoor Climate",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select your indoor unit type",
+        "description": "Only indoor humidity and noise are exposed. Use your own Netatmo developer application credentials.",
+        "data": {"product": "Product"}
+      },
+      "pick_implementation": {
+        "title": "Choose application credentials",
+        "data": {"implementation": "Application"}
+      },
+      "device": {
+        "title": "Select an indoor unit",
+        "description": "Polling defaults to 60 seconds. Actual measurement freshness depends on Netatmo cloud uploads.",
+        "data": {"device_id": "Indoor unit"}
+      },
+      "reauth_confirm": {
+        "title": "Authorize Netatmo again",
+        "description": "Your Netatmo authorization has expired or been revoked. Reconnect the same account that owns this indoor unit."
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to retrieve indoor units. Check your connection and retry. If rate limited, wait at least 10 minutes.",
+      "invalid_device": "Select one of the listed indoor units."
+    },
+    "abort": {
+      "already_configured": "This indoor unit is already configured.",
+      "no_devices": "No matching indoor units were found. Check the selected product type and Netatmo account.",
+      "invalid_auth": "Netatmo rejected authorization. Check the app permissions and reconnect.",
+      "missing_credentials": "Add Netatmo Indoor Climate application credentials first.",
+      "missing_configuration": "Application credentials are required.",
+      "reauth_successful": "Netatmo authorization renewed.",
+      "oauth_error": "Netatmo returned an invalid authorization token.",
+      "oauth_failed": "Unable to complete Netatmo authorization.",
+      "oauth_unauthorized": "Netatmo rejected your application credentials.",
+      "oauth_timeout": "Netatmo authorization timed out.",
+      "authorize_url_timeout": "Generating the authorization URL timed out.",
+      "user_rejected_authorize": "Authorization was declined: {error}",
+      "no_url_available": "Configure a Home Assistant URL: {docs_url}"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Indoor polling",
+        "description": "30-600 seconds. Faster polling does not increase the device's measurement/upload frequency. Other clients share Netatmo's API quota.",
+        "data": {"poll_interval": "Polling interval (seconds)"}
+      },
+      "indoor_webhook": {
+        "title": "Indoor polling and webhooks",
+        "description": "Webhook callback: {webhook_url}\n\nKeep this URL private. Signed events are logged; sensor readings still use polling. Subscription is attempted automatically on load. 30-600 seconds for polling.",
+        "data": {"poll_interval": "Polling interval (seconds)"}
+      }
+    },
+    "error": {"invalid_interval": "Enter an interval between 30 and 600 seconds."}
+  },
+  "entity": {
+    "sensor": {
+      "humidity": {"name": "Humidity"},
+      "noise": {"name": "Noise"},
+      "measured_at": {"name": "Last measurement"}
+    }
+  }
+}
